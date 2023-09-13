@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>MyTicketRemaster.Domain</AssemblyName>
+    <RootNamespace>MyTicketRemaster.Domain</RootNamespace>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Common\ValueObjects\Address\**" />
+    <EmbeddedResource Remove="Common\ValueObjects\Address\**" />
+    <None Remove="Common\ValueObjects\Address\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Common\ValueObjects\" />
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+</Project>
