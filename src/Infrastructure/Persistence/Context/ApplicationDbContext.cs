@@ -4,6 +4,16 @@ using MyTicketRemaster.Application.Dependencies.Services;
 using MyTicketRemaster.Domain.Common;
 using MyTicketRemaster.Infrastructure.Identity.Model;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using MyTicketRemaster.Domain.Entities.Groups;
+using MyTicketRemaster.Domain.Entities.Priorities;
+using MyTicketRemaster.Domain.Entities.Projects;
+using MyTicketRemaster.Domain.Entities.Status;
+using MyTicketRemaster.Domain.Entities.StoredReplies;
+using MyTicketRemaster.Domain.Entities.TicketsHeader;
+using MyTicketRemaster.Domain.Entities.TicketsLine;
+using MyTicketRemaster.Domain.Entities.Types;
+using MyTicketRemaster.Domain.Entities.Users.Customers;
+using MyTicketRemaster.Domain.Entities.Users.Employees;
 
 namespace MyTicketRemaster.Infrastructure.Persistence.Context;
 
@@ -17,6 +27,18 @@ namespace MyTicketRemaster.Infrastructure.Persistence.Context;
 /// </summary>
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
+    public DbSet<TGroup> Groups => Set<TGroup>();
+    public DbSet<Priority> Priorities => Set<Priority>();
+    public DbSet<Project> Projects=> Set<Project>();
+    public DbSet<TStatus> Status => Set<TStatus>();
+    public DbSet<StoredReply> StoredRepllies => Set<StoredReply>();
+    public DbSet<TicketHeader> TicketsHeader => Set<TicketHeader>();
+    public DbSet<TicketLine> TicketsLine => Set<TicketLine>();
+    public DbSet<TType> Types => Set<TType>();
+    public DbSet<Employee> Employees => Set<Employee>();
+    public DbSet<Customer> Customers => Set<Customer>();
+
+
     private readonly ICurrentUserService _currentUser;
     private readonly IDateTime _dateTime;
 
@@ -75,7 +97,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         // Configure the value objects of the application domain as EF Core owned types.
-
+        builder.Owned<Address>();
 
         ConfigureSoftDeleteFilter(builder);
 
