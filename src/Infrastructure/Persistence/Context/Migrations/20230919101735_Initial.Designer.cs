@@ -12,8 +12,8 @@ using MyTicketRemaster.Infrastructure.Persistence.Context;
 namespace MyTicketRemaster.Infrastructure.Persistence.Context.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230914124619_Entities")]
-    partial class Entities
+    [Migration("20230919101735_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

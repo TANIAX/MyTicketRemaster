@@ -11,10 +11,11 @@ internal class UnitOfWork : IUnitOfWork
     private readonly ApplicationDbContext _dbContext;
     private IDbContextTransaction? _currentTransaction;
 
-
-    public UnitOfWork(ApplicationDbContext dbContext)
+    public IGroupRepository Groups { get; }
+    public UnitOfWork(ApplicationDbContext dbContext, IGroupRepository groups) 
     {
         _dbContext = dbContext;
+        Groups = groups;
     }
 
     public void Dispose()

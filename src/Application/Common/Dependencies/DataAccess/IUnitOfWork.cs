@@ -6,6 +6,8 @@ public interface IUnitOfWork : IDisposable
 {
     bool HasActiveTransaction { get; }
 
+    public IGroupRepository Groups { get; }
+
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();
     Task RollbackTransactionAsync();

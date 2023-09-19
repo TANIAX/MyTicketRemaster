@@ -16,6 +16,7 @@ internal static class Startup
     public static void ConfigureServices(this IServiceCollection services, IConfiguration _)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IGroupRepository, GroupRepositoryEF>();
 
         services.AddTransient<IDateTime, DateTimeService>();
     }
