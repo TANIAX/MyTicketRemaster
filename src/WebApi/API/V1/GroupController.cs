@@ -1,10 +1,10 @@
 ﻿using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories.Common;
-using MyTicketRemaster.Application.Groups.Commands.Delete;
-using MyTicketRemaster.Application.Groups.Commands.Update;
-using MyTicketRemaster.Application.Groups.CreateGroup;
-using MyTicketRemaster.Application.Groups.GetGroupDetails;
-using MyTicketRemaster.Application.Groups.GetGroupGetGroupList;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using MyTicketRemaster.Application.Groups.Create;
+using MyTicketRemaster.Application.Groups.Delete;
+using MyTicketRemaster.Application.Groups.GetList;
+using MyTicketRemaster.Application.Groups.Update;
+using MyTicketRemaster.Application.Groups.GetDetails;
+using GetGroupDetailsQuery = MyTicketRemaster.Application.Groups.GetDetails.GetGroupDetailsQuery;
 
 namespace MyTicketRemaster.WebApi.API.V1;
 

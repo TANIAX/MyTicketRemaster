@@ -25,4 +25,22 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Customers\Create\" />
+    <Folder Include="Customers\Delete\" />
+    <Folder Include="Customers\GetDetails\" />
+    <Folder Include="Customers\GetList\" />
+    <Folder Include="Customers\Update\" />
+    <Folder Include="TicketsLines\Create\" />
+    <Folder Include="TicketsLines\Delete\" />
+    <Folder Include="TicketsLines\GetDetails\" />
+    <Folder Include="TicketsLines\GetList\" />
+    <Folder Include="TicketsLines\Update\" />
+    <Folder Include="TicketsHeader\Create\" />
+    <Folder Include="TicketsHeader\Delete\" />
+    <Folder Include="TicketsHeader\GetDetails\" />
+    <Folder Include="TicketsHeader\GetList\" />
+    <Folder Include="TicketsHeader\Update\" />
+  </ItemGroup>
+
 </Project>

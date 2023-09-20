@@ -14,6 +14,8 @@ using MyTicketRemaster.Domain.Entities.TicketsLine;
 using MyTicketRemaster.Domain.Entities.Types;
 using MyTicketRemaster.Domain.Entities.Users.Customers;
 using MyTicketRemaster.Domain.Entities.Users.Employees;
+using MyTicketRemaster.Domain.Entities.Users.Contacts;
+using MyTicketRemaster.Domain.Entities.Users;
 
 namespace MyTicketRemaster.Infrastructure.Persistence.Context;
 
@@ -37,6 +39,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<TType> Types => Set<TType>();
     public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<Customer> Customers => Set<Customer>();
+    public DbSet<TContact> Contacts => Set<TContact>();
 
 
     private readonly ICurrentUserService _currentUser;

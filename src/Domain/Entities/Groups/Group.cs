@@ -10,7 +10,7 @@ namespace MyTicketRemaster.Domain.Entities.Groups
     {
         [Required]
         [StringLength(GroupInvariants.NameMaxLength)]
-        public string Name { get; private set; }
+        public string Name { get; private set; } = null!;
 
         public TGroup(string name)
         {

@@ -2,5 +2,5 @@
 
 public static class StoredReplyInvariants
 {
-    public const int NameMaxLength = 100;
+    public const int TitleMaxLength = 100;
 }

@@ -1,5 +1,4 @@
 ﻿using MyTicketRemaster.Domain.Common;
-using MyTicketRemaster.Domain.Entities.Users;
 
 namespace MyTicketRemaster.Domain.Entities.TicketsLine
 {

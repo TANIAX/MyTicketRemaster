@@ -11,11 +11,29 @@ internal class UnitOfWork : IUnitOfWork
     private readonly ApplicationDbContext _dbContext;
     private IDbContextTransaction? _currentTransaction;
 
-    public IGroupRepository Groups { get; }
-    public UnitOfWork(ApplicationDbContext dbContext, IGroupRepository groups) 
+    public IGroupRepository Groups { get; } = null!;
+    public IProjectRepository Projects { get; } = null!;
+    public IStatusRepository Status { get; } = null!;
+    public ITypeRepository Types { get; } = null!;
+    public IPriorityRepository Priorities { get; } = null!;
+    public IStoredReplyRepository StoredReplies { get; } = null!;
+    public IEmployeeRepository Employees { get; set; } = null!;
+    public UnitOfWork(ApplicationDbContext dbContext, IGroupRepository groups, 
+        IProjectRepository projects,
+        IStatusRepository status,
+        ITypeRepository types,
+        IPriorityRepository priorities,
+        IStoredReplyRepository storedReplies,
+        IEmployeeRepository employees) 
     {
         _dbContext = dbContext;
         Groups = groups;
+        Projects = projects;
+        Status = status;
+        Types = types;
+        Priorities = priorities;
+        StoredReplies = storedReplies;
+        Employees = employees;
     }
 
     public void Dispose()

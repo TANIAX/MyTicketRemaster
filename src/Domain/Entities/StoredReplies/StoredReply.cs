@@ -1,26 +1,53 @@
 ﻿using MyTicketRemaster.Domain.Common;
+using MyTicketRemaster.Domain.Entities.Priorities;
 
-namespace MyTicketRemaster.Domain.Entities.StoredReplies
+namespace MyTicketRemaster.Domain.Entities.StoredReplies;
+
+public class StoredReply : MyEntity
 {
-    public class StoredReply : MyEntity
+    [Required]
+    [StringLength(StoredReplyInvariants.TitleMaxLength)]
+    public string Title { get; private set; } = null!;
+
+    [Required]
+    public string Reply { get; private set; } = null!;
+
+    public StoredReply(string title, string reply)
     {
-        [Required]
-        [StringLength(StoredReplyInvariants.NameMaxLength)]
-        public string Title { get; private set; }
-        public string Reply { get; private set; }
+        UpdateTitle(title);
+        UpdateReply(reply);
+    }
+    public override bool Equals(object obj)
+    {
+        StoredReply sr = (StoredReply)obj;
 
-        public override bool Equals(object obj)
-        {
-            StoredReply sr = (StoredReply)obj;
+        if (sr == null)
+            return false;
 
-            if (sr == null)
-                return false;
+        return sr.Title == Title && sr.Reply == sr.Reply;
+    }
+    public override int GetHashCode()
+    {
+        return string.Format("{0}_{1}", Title, Reply).GetHashCode();
+    }
 
-            return sr.Title == Title && sr.Reply == sr.Reply;
-        }
-        public override int GetHashCode()
-        {
-            return string.Format("{0}_{1}", Title, Reply).GetHashCode();
-        }
+    public void UpdateTitle(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException("Name cannot be empty.");
+
+        if (value.Length > PriorityInvariants.NameMaxLength)
+            throw new ArgumentException($"Length of value ({value.Length}) exceeds maximum name length ({StoredReplyInvariants.TitleMaxLength}).");
+
+        Title = value;
+    }
+
+    public void UpdateReply(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            throw new ArgumentException("Name cannot be empty.");
+
+        Reply = value;
     }
 }
+
