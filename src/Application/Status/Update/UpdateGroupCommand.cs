@@ -23,7 +23,6 @@ namespace MyTicketRemaster.Application.Statuss.UpdatStatus;
                  ?? throw new EntityNotFoundException(nameof(TStatus), request.Id);
 
             status.UpdateName(request.Name.Trim());
-            status.Editable = true;
 
             await _unitOfWork.SaveChanges();
 

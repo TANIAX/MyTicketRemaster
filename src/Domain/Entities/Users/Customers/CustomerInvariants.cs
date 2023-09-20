@@ -2,6 +2,7 @@
 {
     public static class CustomerInvariants
     {
-        public const int NameMaxLength = 100;
+        public const int CompanyNameMaxLength = 100;
+        public const int AddressStreetMaxLength = 100;
     }
 }

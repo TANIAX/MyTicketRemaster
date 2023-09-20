@@ -5,10 +5,11 @@ namespace MyTicketRemaster.Domain.Entities.Status
     public class TStatus : MyEntity
     {
         [Required]
-        [StringLength(StatusInvariants.NameMaxLength)]
-        public string Name { get; private set; } = null!;
-        public bool Editable { get; set; }
+        [MaxLength(StatusInvariants.NameMaxLength)]
+        public string Name { get; private set; }
+        public bool Editable { get; private set; }
 
+        public TStatus() { }
         public TStatus(string name, bool editable = true) 
         { 
             UpdateName(name);

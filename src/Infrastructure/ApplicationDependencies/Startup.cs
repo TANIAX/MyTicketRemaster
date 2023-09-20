@@ -17,6 +17,14 @@ internal static class Startup
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IGroupRepository, GroupRepositoryEF>();
+        services.AddScoped<IProjectRepository, ProjectRepositoryEF>();
+        services.AddScoped<IStatusRepository, StatusRepositoryEF>();
+        services.AddScoped<ITypeRepository, TypeRepositoryEF>();
+        services.AddScoped<IPriorityRepository, PriorityRepositoryEF>();
+        services.AddScoped<IStoredReplyRepository, StoredReplyRepositoryEF>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepositoryEF>();
+        services.AddScoped<IContactRepository, ContactRepositoryEF>();
+        services.AddScoped<ICustomerRepository, CustomerRepositoryEF>();
 
         services.AddTransient<IDateTime, DateTimeService>();
     }

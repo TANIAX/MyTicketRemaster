@@ -23,7 +23,6 @@ public record UpdateProjectCommand : IRequest<Project>
                  ?? throw new EntityNotFoundException(nameof(Project), request.Id);
 
             project.UpdateName(request.Name.Trim());
-            project.Editable = true;
 
             await _unitOfWork.SaveChanges();
 

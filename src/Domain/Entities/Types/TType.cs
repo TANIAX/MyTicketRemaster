@@ -6,9 +6,10 @@ namespace MyTicketRemaster.Domain.Entities.Types
     {
         [Required]
         [StringLength(TypeInvariants.NameMaxLength)]
-        public string Name { get; private set; } = null!;
-        public bool Editable { get; set; }
+        public string Name { get; private set; }
+        public bool Editable { get; private set; }
 
+        public TType() { }
         public TType(string name, bool editable = true)
         {
             UpdateName(name);

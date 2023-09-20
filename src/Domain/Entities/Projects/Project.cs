@@ -5,10 +5,11 @@ namespace MyTicketRemaster.Domain.Entities.Projects
     public class Project : MyEntity
     {
         [Required]
-        [StringLength(ProjectInvariants.NameMaxLength)]
-        public string Name { get; private set; } = null!;
-        public bool Editable { get; set; }
+        [MaxLength(ProjectInvariants.NameMaxLength)]
+        public string Name { get; private set; }
+        public bool Editable { get; private set; }
 
+        public Project() { }
         public Project(string name, bool editable = true)
         {
             UpdateName(name);

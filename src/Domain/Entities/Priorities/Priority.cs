@@ -5,10 +5,11 @@ namespace MyTicketRemaster.Domain.Entities.Priorities
     public class Priority : MyEntity
     {
         [Required]
-        [StringLength(PriorityInvariants.NameMaxLength)]
-        public string Name { get; private set; } = null!;
-        public bool Editable { get; set; }
+        [MaxLength(PriorityInvariants.NameMaxLength)]
+        public string Name { get; private set; }
+        public bool Editable { get; private set; }
 
+        public Priority() { }
         public Priority(string name, bool editable = true)
         {
             UpdateName(name);

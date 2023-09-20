@@ -18,13 +18,18 @@ internal class UnitOfWork : IUnitOfWork
     public IPriorityRepository Priorities { get; } = null!;
     public IStoredReplyRepository StoredReplies { get; } = null!;
     public IEmployeeRepository Employees { get; set; } = null!;
+    public ICustomerRepository Customers { get; set; } = null!;
+    public IContactRepository Contacts { get; set; } = null!;
+
     public UnitOfWork(ApplicationDbContext dbContext, IGroupRepository groups, 
         IProjectRepository projects,
         IStatusRepository status,
         ITypeRepository types,
         IPriorityRepository priorities,
         IStoredReplyRepository storedReplies,
-        IEmployeeRepository employees) 
+        IEmployeeRepository employees,
+        ICustomerRepository customers,
+        IContactRepository contacts) 
     {
         _dbContext = dbContext;
         Groups = groups;
@@ -34,6 +39,8 @@ internal class UnitOfWork : IUnitOfWork
         Priorities = priorities;
         StoredReplies = storedReplies;
         Employees = employees;
+        Customers = customers;
+        Contacts = contacts;
     }
 
     public void Dispose()

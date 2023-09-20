@@ -23,7 +23,6 @@ public record UpdatePriorityCommand : IRequest<Priority>
                  ?? throw new EntityNotFoundException(nameof(Priority), request.Id);
 
             priority.UpdateName(request.Name.Trim());
-            priority.Editable = true;
 
             await _unitOfWork.SaveChanges();
 

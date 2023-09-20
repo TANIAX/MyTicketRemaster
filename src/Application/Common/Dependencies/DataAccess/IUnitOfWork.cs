@@ -12,7 +12,9 @@ public interface IUnitOfWork : IDisposable
     public ITypeRepository Types { get; }
     public IPriorityRepository Priorities { get; }
     public IStoredReplyRepository StoredReplies { get; }
-    public IEmployeeRepository Employees { get; set; }
+    public IEmployeeRepository Employees { get; }
+    public IContactRepository Contacts { get; }
+    public ICustomerRepository Customers { get; }
 
     Task BeginTransactionAsync();
     Task CommitTransactionAsync();

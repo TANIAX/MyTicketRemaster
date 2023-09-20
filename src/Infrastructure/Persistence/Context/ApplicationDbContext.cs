@@ -33,13 +33,14 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Priority> Priorities => Set<Priority>();
     public DbSet<Project> Projects=> Set<Project>();
     public DbSet<TStatus> Status => Set<TStatus>();
-    public DbSet<StoredReply> StoredRepllies => Set<StoredReply>();
+    public DbSet<StoredReply> StoredReplies => Set<StoredReply>();
     public DbSet<TicketHeader> TicketsHeader => Set<TicketHeader>();
     public DbSet<TicketLine> TicketsLine => Set<TicketLine>();
     public DbSet<TType> Types => Set<TType>();
     public DbSet<Employee> Employees => Set<Employee>();
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<TContact> Contacts => Set<TContact>();
+    
 
 
     private readonly ICurrentUserService _currentUser;

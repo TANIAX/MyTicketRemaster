@@ -6,12 +6,13 @@ namespace MyTicketRemaster.Domain.Entities.StoredReplies;
 public class StoredReply : MyEntity
 {
     [Required]
-    [StringLength(StoredReplyInvariants.TitleMaxLength)]
-    public string Title { get; private set; } = null!;
+    [MaxLength(StoredReplyInvariants.TitleMaxLength)]
+    public string Title { get; private set; } 
 
     [Required]
-    public string Reply { get; private set; } = null!;
+    public string Reply { get; private set; }
 
+    public StoredReply() { }
     public StoredReply(string title, string reply)
     {
         UpdateTitle(title);
