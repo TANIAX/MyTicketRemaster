@@ -3,10 +3,10 @@
 public class AuthenticationSettings
 {
     [Required, MinLength(10)]
-    public string JwtIssuer { get; init; } = default!;
+    public string JwtIssuer { get; set; } = default!;
 
     [Required, MinLength(1)]
-    public string JwtAudience { get; init; } = default!;
+    public string JwtAudience { get; set; } = default!;
 
     [Required, MinLength(10)]
     public string JwtSigningKeyBase64

@@ -24,6 +24,7 @@ namespace MyTicketRemaster.Domain.Entities.Status
             if (value.Length > StatusInvariants.NameMaxLength)
                 throw new ArgumentException($"Length of value ({value.Length}) exceeds maximum name length ({StatusInvariants.NameMaxLength}).");
 
+            Name = value;
         }   
     }
 }

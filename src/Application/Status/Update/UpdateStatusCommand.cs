@@ -7,7 +7,7 @@ namespace MyTicketRemaster.Application.Statuss.UpdatStatus;
     public record UpdateStatusCommand : IRequest<TStatus>
 {
     public int Id { get; set; }
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } 
     public class UpdateStatusCommandHandler : IRequestHandler<UpdateStatusCommand, TStatus>
     {
         private readonly IUnitOfWork _unitOfWork;

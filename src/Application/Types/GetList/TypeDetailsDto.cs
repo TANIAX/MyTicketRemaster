@@ -5,8 +5,8 @@ namespace MyTicketRemaster.Application.Types.GetList;
 
 public record TypeDto : IMapFrom<TType>
 {
-    public int Id { get; init; }
-    public string Name { get; init; } = null!;
+    public int Id { get; set; }
+    public string Name { get; set; }
 
     public void Mapping(Profile profile)
     {

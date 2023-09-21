@@ -3,12 +3,12 @@ using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories.C
 
 namespace MyTicketRemaster.Application.Groups.GetList;
 
-public record GetGroupDetailsQuery : IRequest<GroupDto>
+public record GetGroupListQuery : IRequest<GroupDto>
 {
 
 }
 
-public class GetGroupListQueryHandler: IRequestHandler<ListQueryModel<GroupDto>, IListResponseModel<GroupDto>>
+public class GetGroupListQueryHandler : IRequestHandler<ListQueryModel<GroupDto>, IListResponseModel<GroupDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

@@ -5,8 +5,8 @@ namespace MyTicketRemaster.Application.Projects.GetList;
 
 public record ProjectDto : IMapFrom<Project>
 {
-    public int Id { get; init; }
-    public string Name { get; init; } = null!;
+    public int Id { get; set; }
+    public string Name { get; set; }
     public bool Editable { get; set; } 
 
     public void Mapping(Profile profile)

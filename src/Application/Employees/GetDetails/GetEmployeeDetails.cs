@@ -4,7 +4,7 @@ namespace MyTicketRemaster.Application.Employees.GetDetails;
 
 public record GetEmployeeDetailsQuery : IRequest<EmployeeDetailsDto>
 {
-    public int Id { get; init; }
+    public int Id { get; set; }
 }
 
 public class GetEmployeeDetailsQueryHandler : IRequestHandler<GetEmployeeDetailsQuery, EmployeeDetailsDto>

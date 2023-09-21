@@ -6,7 +6,7 @@ namespace MyTicketRemaster.Application.Groups.Create;
 
 public record CreateGroupCommand : IRequest<TGroup>
 {
-    public string Name { get; init; } = null!;
+    public string Name { get; set; }
 }
 
 public class CreateGroupCommandHandler : IRequestHandler<CreateGroupCommand, TGroup>

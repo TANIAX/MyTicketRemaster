@@ -5,7 +5,7 @@ namespace MyTicketRemaster.Application.Priorities.Create;
 
 public record CreatePriorityCommand : IRequest<Priority>
 {
-    public string Name { get; init; } = null!;
+    public string Name { get; set; }
 }
 
 public class CreatePriorityCommandHandler : IRequestHandler<CreatePriorityCommand, Priority>

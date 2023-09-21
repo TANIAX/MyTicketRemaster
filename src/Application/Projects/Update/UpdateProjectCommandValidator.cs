@@ -1,4 +1,6 @@
 ﻿
+using MyTicketRemaster.Domain.Entities.Projects;
+
 namespace MyTicketRemaster.Application.Projects.Update;
 
 public class UpdateProjectCommandValidator : AbstractValidator<UpdateProjectCommand>
@@ -10,7 +12,7 @@ public class UpdateProjectCommandValidator : AbstractValidator<UpdateProjectComm
 
         RuleFor(v => v.Name)
             .NotEmpty().WithMessage("Name is required")
-            .MaximumLength(30).WithMessage("Name must not exceed 30 characters");
+            .MaximumLength(ProjectInvariants.NameMaxLength).WithMessage($"Name must not exceed {ProjectInvariants.NameMaxLength} characters");
     }
 }
 

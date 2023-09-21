@@ -1,4 +1,6 @@
-﻿namespace MyTicketRemaster.Application.Projects.Create;
+﻿using MyTicketRemaster.Domain.Entities.Projects;
+
+namespace MyTicketRemaster.Application.Projects.Create;
 
 public class CreateProjectCommandValidator : AbstractValidator<CreateProjectCommand>
 {
@@ -6,6 +8,6 @@ public class CreateProjectCommandValidator : AbstractValidator<CreateProjectComm
     {
         RuleFor(v => v.Name)
             .NotEmpty().WithMessage("Name is required")
-            .MaximumLength(30).WithMessage("Name must not exceed 30 characters");
+            .MaximumLength(ProjectInvariants.NameMaxLength).WithMessage($"Name must not exceed {ProjectInvariants.NameMaxLength} characters");
     }
 }

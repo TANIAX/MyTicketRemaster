@@ -3,16 +3,16 @@
     public record Address
     {
         [Required, MinLength(1), MaxLength(100)]
-        public string Street { get; init; }
+        public string Street { get; set; }
 
         [Required, MinLength(1), MaxLength(100)]
-        public string City { get; init; }
+        public string City { get; set; }
 
         [Required, MinLength(1), MaxLength(100)]
-        public string Country { get; init; }
+        public string Country { get; set; }
 
         [Required, MinLength(1), MaxLength(100)]
-        public string ZipCode { get; init; }
+        public string ZipCode { get; set; }
 
         private Address()
         {

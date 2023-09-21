@@ -5,11 +5,11 @@ namespace MyTicketRemaster.Application.StoredReplies.GetDetails;
 
 public record StoredReplyDetailsDto : IMapFrom<Project>
 {
-    public int Id { get; init; }
-    public string Name { get; init; } = null!;
+    public int Id { get; set; }
+    public string Name { get; set; }
     public bool Editable { get; set; }
-    public DateTime CreatedAt { get; init; }
-    public DateTime? LastModifiedAt { get; init; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? LastModifiedAt { get; set; }
 
     public void Mapping(Profile profile)
     {

@@ -7,7 +7,7 @@ namespace MyTicketRemaster.Application.Projects.Update;
 public record UpdateProjectCommand : IRequest<Project>
 {
     public int Id { get; set; }
-    public string Name { get; set; } = null!;
+    public string Name { get; set; } 
     public class UpdateProjectCommandHandler : IRequestHandler<UpdateProjectCommand, Project>
     {
         private readonly IUnitOfWork _unitOfWork;

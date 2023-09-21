@@ -6,7 +6,7 @@ namespace MyTicketRemaster.Application.Types.Create;
 
 public record CreateTypeCommand : IRequest<TType>
 {
-    public string Name { get; init; } = null!;
+    public string Name { get; set; }
 }
 
 public class CreateTypeCommandHandler : IRequestHandler<CreateTypeCommand, TType>

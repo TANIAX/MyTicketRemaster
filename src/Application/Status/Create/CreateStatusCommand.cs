@@ -2,11 +2,11 @@
 using MyTicketRemaster.Domain.Entities.Status;
 
 
-namespace MyTicketRemaster.Application.Statuss.CreateStatus;
+namespace MyTicketRemaster.Application.Status.Create;
 
 public record CreateStatusCommand : IRequest<TStatus>
 {
-    public string Name { get; init; } = null!;
+    public string Name { get; set; } 
 }
 
 public class CreateStatusCommandHandler : IRequestHandler<CreateStatusCommand, TStatus>

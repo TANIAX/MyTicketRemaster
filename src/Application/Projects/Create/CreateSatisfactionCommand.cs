@@ -5,7 +5,7 @@ namespace MyTicketRemaster.Application.Projects.Create;
 
 public record CreateProjectCommand : IRequest<Project>
 {
-    public string Name { get; init; } = null!;
+    public string Name { get; set; }
 }
 
 public class CreateProjectCommandHandler : IRequestHandler<CreateProjectCommand, Project>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using FluentValidation;
+using MyTicketRemaster.Domain.Entities.Groups;
 
 namespace MyTicketRemaster.Application.Groups.Update;
 
@@ -14,7 +15,7 @@ namespace MyTicketRemaster.Application.Groups.Update;
 
         RuleFor(v => v.Name)
             .NotEmpty().WithMessage("Name is required")
-            .MaximumLength(30).WithMessage("Name must not exceed 30 characters");
+            .MaximumLength(GroupInvariants.NameMaxLength).WithMessage($"Name must not exceed {GroupInvariants.NameMaxLength} characters");
     }
 }
 

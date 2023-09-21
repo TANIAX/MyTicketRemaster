@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using FluentValidation;
+using MyTicketRemaster.Domain.Entities.Status;
 
 namespace MyTicketRemaster.Application.Statuss.UpdatStatus
 {
@@ -14,7 +15,7 @@ namespace MyTicketRemaster.Application.Statuss.UpdatStatus
 
             RuleFor(v => v.Name)
                 .NotEmpty().WithMessage("Name is required")
-                .MaximumLength(30).WithMessage("Name must not exceed 30 characters");
+                .MaximumLength(StatusInvariants.NameMaxLength).WithMessage($"Name must not exceed {StatusInvariants.NameMaxLength} characters");
         }
     }
 }

@@ -7,7 +7,7 @@ namespace MyTicketRemaster.Application.Groups.Update;
     public record UpdateGroupCommand : IRequest<TGroup>
 {
     public int Id { get; set; }
-    public string Name { get; set; } = null!;
+    public string Name { get; set; }
     public class UpdateGroupCommandHandler : IRequestHandler<UpdateGroupCommand, TGroup>
     {
         private readonly IUnitOfWork _unitOfWork;

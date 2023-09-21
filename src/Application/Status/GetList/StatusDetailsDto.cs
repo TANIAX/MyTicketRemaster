@@ -5,8 +5,8 @@ namespace MyTicketRemaster.Application.Statuss.GetStatusGetStatusList;
 
 public record StatusDto : IMapFrom<TStatus>
 {
-    public int Id { get; init; }
-    public string Name { get; init; } = null!;
+    public int Id { get; set; }
+    public string Name { get; set; } 
 
     public void Mapping(Profile profile)
     {

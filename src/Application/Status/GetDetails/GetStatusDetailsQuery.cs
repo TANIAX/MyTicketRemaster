@@ -1,5 +1,7 @@
 ﻿using MyTicketRemaster.Application.Common.Dependencies.DataAccess;
 using MyTicketRemaster.Application.Common.Exceptions;
+using MyTicketRemaster.Application.Groups.GetDetails;
+using MyTicketRemaster.Domain.Entities.Groups;
 using MyTicketRemaster.Domain.Entities.Status;
 
 namespace MyTicketRemaster.Application.Statuss.GetStatusDetails;
@@ -26,7 +28,7 @@ public class GetStatusDetailsQueryHandler : IRequestHandler<GetStatusDetailsQuer
     public async Task<StatusDetailsDto> Handle(GetStatusDetailsQuery request, CancellationToken cancellationToken)
     {
         var status = await _unitOfWork.Status.GetByIdAsync(request.Id)
-            ?? throw new EntityNotFoundException(nameof(TStatus), request.Id);
+           ?? throw new EntityNotFoundException(nameof(TStatus), request.Id);
 
         return _mapper.Map<StatusDetailsDto>(status);
     }

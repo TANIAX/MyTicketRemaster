@@ -1,5 +1,5 @@
 ﻿
-using MyTicketRemaster.Application.Groups.Create;
+using MyTicketRemaster.Domain.Entities.Groups;
 
 namespace MyTicketRemaster.Application.Groups.Create
 {
@@ -9,7 +9,7 @@ namespace MyTicketRemaster.Application.Groups.Create
         {
             RuleFor(v => v.Name)
                 .NotEmpty().WithMessage("Name is required")
-                .MaximumLength(30).WithMessage("Name must not exceed 30 characters");
+                .MaximumLength(GroupInvariants.NameMaxLength).WithMessage($"Name must not exceed {GroupInvariants.NameMaxLength} characters");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MyTicketRemaster.Domain.Entities.Users.Contact
+﻿namespace MyTicketRemaster.Domain.Entities.Users.Contacts
 {
     public static class ContactInvariants
     {

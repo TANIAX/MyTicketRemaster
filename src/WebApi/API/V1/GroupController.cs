@@ -5,6 +5,7 @@ using MyTicketRemaster.Application.Groups.GetList;
 using MyTicketRemaster.Application.Groups.Update;
 using MyTicketRemaster.Application.Groups.GetDetails;
 using GetGroupDetailsQuery = MyTicketRemaster.Application.Groups.GetDetails.GetGroupDetailsQuery;
+using MyTicketRemaster.Domain.Entities.Groups;
 
 namespace MyTicketRemaster.WebApi.API.V1;
 
@@ -19,30 +20,33 @@ public class GroupController : ControllerBase
     public GroupController(IMediator mediator)
      => _mediator = mediator;
 
-
-    //Get
-    [HttpGet("{id}")]
-    public async Task<ActionResult<GroupDetailsDto>> Get(int id)
-        => Ok(await _mediator.Send(new GetGroupDetailsQuery(id)));
-
-    //List
     [HttpGet]
+    [Description("List groups")]
     public async Task<ActionResult<IListResponseModel<GroupDto>>> GetList([FromQuery] ListQueryModel<GroupDto> query)
         => Ok(await _mediator.Send(query));
 
+    //Get
+    [HttpGet("{id}")]
+    [Description("print a group")]
+    public async Task<ActionResult<GroupDetailsDto>> Get(int id)
+        => Ok(await _mediator.Send(new GetGroupDetailsQuery(id)));
+
     //Create
     [HttpPost]
-    public async Task<ActionResult<int>> Create(CreateGroupCommand command)
+    [Description("Create a group")]
+    public async Task<ActionResult<TGroup>> Create(CreateGroupCommand command)
         => Ok(await _mediator.Send(command));
 
     //Update
-    [HttpPut("{id}")]
-    public async Task<ActionResult<int>> Update(UpdateGroupCommand command)
+    [HttpPut]
+    [Description("Update a group")]
+    public async Task<ActionResult<TGroup>> Update(UpdateGroupCommand command)
         => Ok(await _mediator.Send(command));
 
     //Delete
     [HttpDelete("{id}")]
-    public async Task<ActionResult<int>> Delete(int id)
+    [Description("Delete a group")]
+    public async Task<ActionResult<Unit>> Delete(int id)
         => Ok(await _mediator.Send(new DeleteGroupCommand(id)));
 
 }

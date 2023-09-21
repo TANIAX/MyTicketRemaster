@@ -24,6 +24,7 @@ namespace MyTicketRemaster.Domain.Entities.Projects
             if (value.Length > ProjectInvariants.NameMaxLength)
                 throw new ArgumentException($"Length of value ({value.Length}) exceeds maximum name length ({ProjectInvariants.NameMaxLength}).");
 
+               Name = value;
         }
     }
 }

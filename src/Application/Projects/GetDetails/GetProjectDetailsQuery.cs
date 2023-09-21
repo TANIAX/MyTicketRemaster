@@ -1,5 +1,8 @@
 ﻿using MyTicketRemaster.Application.Common.Dependencies.DataAccess;
 using MyTicketRemaster.Application.Common.Exceptions;
+using MyTicketRemaster.Application.Groups.GetDetails;
+using MyTicketRemaster.Application.Projects.GetList;
+using MyTicketRemaster.Domain.Entities.Groups;
 using MyTicketRemaster.Domain.Entities.Projects;
 
 namespace MyTicketRemaster.Application.Projects.GetDetails;
@@ -25,8 +28,9 @@ public class GetProjectDetailsQueryHandler : IRequestHandler<GetProjectDetailsQu
 
     public async Task<ProjectDetailsDto> Handle(GetProjectDetailsQuery request, CancellationToken cancellationToken)
     {
-        var project = await _unitOfWork.Projects.GetByIdAsync(request.Id)
+        var project = await _unitOfWork.Projects.GetByIdAsync(request.Id) 
             ?? throw new EntityNotFoundException(nameof(Project), request.Id);
+
 
         return _mapper.Map<ProjectDetailsDto>(project);
     }

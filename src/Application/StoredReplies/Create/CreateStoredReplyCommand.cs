@@ -5,8 +5,8 @@ namespace MyTicketRemaster.Application.StoredReplies.Create;
 
 public record CreateStoredReplyCommand : IRequest<StoredReply>
 {
-    public string Title { get; init; } = null!;
-    public string Reply { get; init; } = null!;
+    public string Title { get; set; }
+    public string Reply { get; set; } 
 }
 
 public class CreateStoredReplyCommandHandler : IRequestHandler<CreateStoredReplyCommand, StoredReply>

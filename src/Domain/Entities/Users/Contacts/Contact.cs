@@ -1,5 +1,4 @@
 ﻿using MyTicketRemaster.Domain.Common;
-using MyTicketRemaster.Domain.Entities.Users.Contact;
 using MyTicketRemaster.Domain.Entities.Users.Employee;
 using System.Diagnostics.CodeAnalysis;
 
