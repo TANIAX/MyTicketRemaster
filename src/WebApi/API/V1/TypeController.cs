@@ -19,6 +19,7 @@ public class TypeController : ControllerBase
     public TypeController(IMediator mediator)
      => _mediator = mediator;
 
+    //List
     [HttpGet]
     [Description("List types")]
     public async Task<ActionResult<IListResponseModel<TType>>> GetList([FromQuery] ListQueryModel<TypeDto> query)

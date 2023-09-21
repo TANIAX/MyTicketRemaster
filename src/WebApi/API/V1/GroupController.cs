@@ -20,6 +20,7 @@ public class GroupController : ControllerBase
     public GroupController(IMediator mediator)
      => _mediator = mediator;
 
+    //List
     [HttpGet]
     [Description("List groups")]
     public async Task<ActionResult<IListResponseModel<GroupDto>>> GetList([FromQuery] ListQueryModel<GroupDto> query)
