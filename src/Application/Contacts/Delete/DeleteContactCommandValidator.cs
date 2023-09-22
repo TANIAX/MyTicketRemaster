@@ -5,6 +5,7 @@ public class DeleteContactCommandValidator : AbstractValidator<DeleteContactComm
 {
     public DeleteContactCommandValidator()
     {
-
+        RuleFor(v => v.Id)
+            .NotEmpty().WithMessage("Id is required");
     }
 }

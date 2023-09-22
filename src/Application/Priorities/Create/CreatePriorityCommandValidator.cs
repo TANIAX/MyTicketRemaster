@@ -1,4 +1,6 @@
-﻿namespace MyTicketRemaster.Application.Priorities.Create;
+﻿using MyTicketRemaster.Domain.Entities.Priorities;
+
+namespace MyTicketRemaster.Application.Priorities.Create;
 
 public class CreatePriorityCommandValidator : AbstractValidator<CreatePriorityCommand>
 {
@@ -6,6 +8,6 @@ public class CreatePriorityCommandValidator : AbstractValidator<CreatePriorityCo
     {
         RuleFor(v => v.Name)
             .NotEmpty().WithMessage("Name is required")
-            .MaximumLength(30).WithMessage("Name must not exceed 30 characters");
+            .MaximumLength(PriorityInvariants.NameMaxLength).WithMessage($"Name must not exceed {PriorityInvariants.NameMaxLength} characters");
     }
 }

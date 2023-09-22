@@ -3,7 +3,7 @@ using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories.C
 
 namespace MyTicketRemaster.Application.StoredReplies.GetList;
 
-public record GetStoredReplyDetailsQuery : IRequest<StoredReplyDto>
+public record GetStoredReplyListQuery : IRequest<StoredReplyDto>
 {
 
 }

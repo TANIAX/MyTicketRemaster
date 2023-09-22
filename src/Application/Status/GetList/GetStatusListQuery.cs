@@ -4,7 +4,7 @@ using MyTicketRemaster.Application.Statuss.GetStatusGetStatusList;
 
 namespace MyTicketRemaster.Application.Statuss.GetStatusList;
 
-public record GetStatusDetailsQuery : IRequest<StatusDto>
+public record GetStatusListQuery : IRequest<StatusDto>
 {
 
 }

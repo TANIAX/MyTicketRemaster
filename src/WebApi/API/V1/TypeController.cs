@@ -5,6 +5,7 @@ using MyTicketRemaster.Application.Types.GetList;
 using MyTicketRemaster.Application.Types.Update;
 using MyTicketRemaster.Application.Types.GetDetails;
 using MyTicketRemaster.Domain.Entities.Types;
+using MyTicketRemaster.Application.Type.GetDetails;
 
 namespace MyTicketRemaster.WebApi.API.V1;
 

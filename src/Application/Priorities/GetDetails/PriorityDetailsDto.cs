@@ -1,9 +1,10 @@
 ﻿using MyTicketRemaster.Application.Common.Mapping;
+using MyTicketRemaster.Domain.Entities.Priorities;
 using MyTicketRemaster.Domain.Entities.Projects;
 
 namespace MyTicketRemaster.Application.Priorities.GetDetails;
 
-public record PriorityDetailsDto : IMapFrom<Project>
+public record PriorityDetailsDto : IMapFrom<Priority>
 {
     public int Id { get; set; }
     public string Name { get; set; }
@@ -13,6 +14,6 @@ public record PriorityDetailsDto : IMapFrom<Project>
 
     public void Mapping(Profile profile)
     {
-        profile.CreateMap<Project, PriorityDetailsDto>();
+        profile.CreateMap<Priority, PriorityDetailsDto>();
     }
 }

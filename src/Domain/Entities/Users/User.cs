@@ -29,6 +29,7 @@ namespace MyTicketRemaster.Domain.Entities.Users
 
         #region Constructors
 
+        protected User() { }
         protected User(string email = "", string phoneNumber = "", string signature = "", string language = "", string profilPicture = "", string applicationUserId = "")
         {
             UpdateEmail(email);

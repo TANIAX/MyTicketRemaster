@@ -1,4 +1,5 @@
 ﻿using MyTicketRemaster.Domain.Common;
+using MyTicketRemaster.Domain.Entities.Users.Customers;
 using MyTicketRemaster.Domain.Entities.Users.Employee;
 using System.Diagnostics.CodeAnalysis;
 
@@ -27,11 +28,14 @@ namespace MyTicketRemaster.Domain.Entities.Users.Contacts
 
         [Required]
         public Address Address { get; private set; }
+
+        [Required]
+        public Customer Customer { get; private set; }
         #endregion
 
         #region Constructors
         public TContact() { }
-        public TContact(string firstName, string lastName, string email, string phoneNumber, string Language, string profilPicture, Address address)
+        public TContact(string firstName, string lastName, string email, string phoneNumber, string Language, string profilPicture, Address address, Customer customer)
         {
             UpdateFirstName(firstName);
             UpdateLastName(lastName);
@@ -40,6 +44,7 @@ namespace MyTicketRemaster.Domain.Entities.Users.Contacts
             UpdateLanguage(Language);
             UpdateProfilPicture(profilPicture);
             UpdateAddress(address);
+            UpdateCustomer(customer);
         }
         #endregion
 
@@ -112,6 +117,12 @@ namespace MyTicketRemaster.Domain.Entities.Users.Contacts
         public void UpdateAddress(Address address)
         {
             Address = address ?? throw new ArgumentNullException(nameof(address));
+        }
+
+        [MemberNotNull(nameof(Customer))]
+        public void UpdateCustomer(Customer customer)
+        {
+            Customer = customer ?? throw new ArgumentNullException(nameof(customer));
         }
         #endregion
     }

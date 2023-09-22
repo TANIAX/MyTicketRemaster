@@ -1,14 +1,15 @@
 ﻿using MyTicketRemaster.Application.Common.Dependencies.DataAccess;
 using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories.Common;
+using MyTicketRemaster.Application.Priorities.GetList;
 
-namespace MyTicketRemaster.Application.Priorities.GetList;
+namespace MyTicketRemaster.Application.Prioritys.GetList;
 
-public record GetPriorityDetailsQuery : IRequest<PriorityDto>
+public record GetPriorityListQuery : IRequest<PriorityDto>
 {
 
 }
 
-public class GetPriorityListQueryHandler: IRequestHandler<ListQueryModel<PriorityDto>, IListResponseModel<PriorityDto>>
+public class GetPriorityListQueryHandler : IRequestHandler<ListQueryModel<PriorityDto>, IListResponseModel<PriorityDto>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;

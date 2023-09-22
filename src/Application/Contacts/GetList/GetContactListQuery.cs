@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyTicketRemaster.Application.Common.Dependencies.DataAccess;
+using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories.Common;
 
 namespace MyTicketRemaster.Application.Contacts.GetList;
 
-public record GetContactListQuery : IRequest<List<ContactDto>>
+public record GetContactListQuery : IRequest<ContactDto>
 {
 
 }
 
-public class GetContactListQueryHandler : IRequestHandler<GetContactListQuery, List<ContactDto>>
+public class GetContactListQueryHandler : IRequestHandler<ListQueryModel<ContactDto>, IListResponseModel<ContactDto>>
 {
-    public Task<List<ContactDto>> Handle(GetContactListQuery request, CancellationToken cancellationToken)
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly IMapper _mapper;
+
+    public GetContactListQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
     {
-        throw new NotImplementedException();
+        _unitOfWork = unitOfWork;
+        _mapper = mapper;
     }
+
+    public Task<IListResponseModel<ContactDto>> Handle(ListQueryModel<ContactDto> request, CancellationToken cancellationToken)
+       => _unitOfWork.Contacts.GetProjectedListAsync(request, readOnly: true);
 }
