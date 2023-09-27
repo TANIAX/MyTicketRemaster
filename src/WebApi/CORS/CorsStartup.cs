@@ -1,6 +1,5 @@
 ﻿using MyTicketRemaster.Infrastructure;
 using MyTicketRemaster.WebApi.CORS.Settings;
-using System.Diagnostics.CodeAnalysis;
 
 namespace MyTicketRemaster.WebApi.CORS;
 

@@ -5,5 +5,5 @@ namespace MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositori
 
 public interface IContactRepository : IRepository<TContact>
 {
-    
+    Task<TContact?> GetByEmailAsync(string email);
 }

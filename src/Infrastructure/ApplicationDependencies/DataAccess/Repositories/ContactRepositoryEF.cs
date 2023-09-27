@@ -29,4 +29,8 @@ internal class ContactRepositoryEF : RepositoryBaseEF<TContact>, IContactReposit
         foreach (var e in entitiesToDelete)
             Remove(e);
     }
+
+    public async Task<TContact?> GetByEmailAsync(string email)
+       => await BaseQuery.SingleOrDefaultAsync(e => e.Email == email);
+
 }

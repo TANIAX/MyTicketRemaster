@@ -27,6 +27,7 @@ public class JwtTokenService : ITokenService
                 new Claim(JwtRegisteredClaimNames.Aud, _authSettings.JwtAudience),
                 new Claim(JwtRegisteredClaimNames.Sub, userId),
                 new Claim(JwtRegisteredClaimNames.UniqueName, uniqueName)
+
             }.Concat(
                 customClaims?.Select(x => new Claim(x.claimType, x.claimValue)) ?? Enumerable.Empty<Claim>())
             ),

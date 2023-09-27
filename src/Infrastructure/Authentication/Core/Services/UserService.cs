@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Azure;
 using MyTicketRemaster.Infrastructure.Authentication.Core.Model;
 using MyTicketRemaster.Infrastructure.Identity.Model;
+using System.Data;
+using System.Security.Claims;
 
 namespace MyTicketRemaster.Infrastructure.Authentication.Core.Services;
 
@@ -8,11 +11,13 @@ public class UserService : IUserService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
     private readonly ITokenService _tokenService;
 
-    public UserService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ITokenService tokenService)
+    public UserService(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ITokenService tokenService)
     {
         _userManager = userManager;
+        _roleManager = roleManager;
         _signInManager = signInManager;
         _tokenService = tokenService;
     }
@@ -38,7 +43,17 @@ public class UserService : IUserService
                 return (MySignInResult.NotAllowed, null);
             throw new System.Exception("Unhandled sign-in outcome.");
         }
+        
+        // Get userRole
+        var userRole = await _userManager.GetRolesAsync(user);
+        //Fixme
+        //IEnumerable<(string claimType, string claimValue)> customClaims = new List<(string, string)>()
+        //{
+        //    (ClaimTypes.Role, "Admin"),
+        //};
+       
 
+        //Create 
         var token = _tokenService.CreateAuthenticationToken(user.Id, username);
 
         return (

@@ -1,11 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyTicketRemaster.Application.Common.Dependencies.DataAccess;
 using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories;
+using MyTicketRemaster.Application.Common.Dependencies.Services;
 using MyTicketRemaster.Application.Dependencies.Services;
 using MyTicketRemaster.Infrastructure.ApplicationDependencies.DataAccess;
 using MyTicketRemaster.Infrastructure.ApplicationDependencies.DataAccess.Repositories;
 using MyTicketRemaster.Infrastructure.ApplicationDependencies.Services;
+using MyTicketRemaster.Infrastructure.Identity;
+using MyTicketRemaster.Infrastructure.Identity.Model;
 using System.Diagnostics.CodeAnalysis;
 
 namespace MyTicketRemaster.Infrastructure.ApplicationDependencies;
@@ -16,6 +20,7 @@ internal static class Startup
     public static void ConfigureServices(this IServiceCollection services, IConfiguration _)
     {
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IIdentityService, IdentityService>();
         services.AddScoped<IGroupRepository, GroupRepositoryEF>();
         services.AddScoped<IProjectRepository, ProjectRepositoryEF>();
         services.AddScoped<IStatusRepository, StatusRepositoryEF>();

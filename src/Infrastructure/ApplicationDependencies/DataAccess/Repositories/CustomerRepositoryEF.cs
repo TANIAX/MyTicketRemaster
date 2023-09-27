@@ -2,7 +2,6 @@
 using MyTicketRemaster.Infrastructure.ApplicationDependencies.DataAccess.Repositories.Common;
 using MyTicketRemaster.Infrastructure.Persistence.Context;
 using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories;
-using MyTicketRemaster.Domain.Entities.Users.Customers;
 using Microsoft.EntityFrameworkCore;
 
 namespace MyTicketRemaster.Infrastructure.ApplicationDependencies.DataAccess.Repositories;
@@ -30,4 +29,7 @@ internal class CustomerRepositoryEF : RepositoryBaseEF<Customer>, ICustomerRepos
 
     public async Task<Customer> GetCustomerByUserIdAsync(string userId)
      => await BaseQuery.SingleOrDefaultAsync(c => c.ApplicationUserId == userId);
+
+    public async Task<Customer?> GetByEmailAsync(string email)
+       => await BaseQuery.SingleOrDefaultAsync(e => e.Email == email);
 }
