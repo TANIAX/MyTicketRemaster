@@ -24,7 +24,7 @@ namespace MyTicketRemaster.Domain.Entities.Users
         [MaxLength(UserInvariants.LanguageMaxLength)]
         public string Language { get; private set; }
 
-        public string ProfilPicture { get; private set; }
+        public string? ProfilPicture { get; private set; }
         #endregion
 
         #region Constructors
@@ -36,8 +36,11 @@ namespace MyTicketRemaster.Domain.Entities.Users
             UpdatePhoneNumber(phoneNumber);
             UpdateSignature(signature);
             UpdateLanguage(language);
+            
             UpdateProfilPicture(profilPicture);
-            UpdateApplicationUserId(applicationUserId);
+
+            if(!string.IsNullOrWhiteSpace(applicationUserId))
+                UpdateApplicationUserId(applicationUserId);
         }
         #endregion
 
@@ -81,9 +84,6 @@ namespace MyTicketRemaster.Domain.Entities.Users
 
         public void UpdateProfilPicture(string value)
         {
-            if(string.IsNullOrWhiteSpace(value))      
-                throw new ArgumentException("ProfilPicture cannot be empty.");
-
             ProfilPicture = value;
         }
 
@@ -91,6 +91,7 @@ namespace MyTicketRemaster.Domain.Entities.Users
         {
             if (string.IsNullOrWhiteSpace(value))
                 throw new ArgumentException("ApplicationUserId cannot be empty.");
+
             ApplicationUserId = value;
         }
         #endregion

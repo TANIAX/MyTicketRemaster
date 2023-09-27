@@ -103,6 +103,36 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         // Configure the value objects of the application domain as EF Core owned types.
         builder.Owned<Address>();
 
+        builder.Entity<TGroup>(e =>
+        {
+            e.HasIndex(x => x.Name).IsUnique();
+        });
+
+        builder.Entity<TStatus>(e =>
+        {
+            e.HasIndex(x => x.Name).IsUnique();
+        });
+
+        builder.Entity<Priority>(e =>
+        {
+            e.HasIndex(x => x.Name).IsUnique();
+        });
+
+        builder.Entity<Project>(e =>
+        {
+            e.HasIndex(x => x.Name).IsUnique();
+        });
+
+        builder.Entity<TType>(e =>
+        {
+            e.HasIndex(x => x.Name).IsUnique();
+        });
+
+        builder.Entity<StoredReply>(e =>
+        {
+            e.HasIndex(x => x.Title);
+        });
+
         ConfigureSoftDeleteFilter(builder);
 
         base.OnModelCreating(builder);

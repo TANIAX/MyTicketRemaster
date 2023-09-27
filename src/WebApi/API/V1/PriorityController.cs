@@ -21,30 +21,36 @@ public class PriorityController : ControllerBase
 
     public PriorityController(IMediator mediator)
      => _mediator = mediator;
-    //List
+
+    //GET api/v1/priority - List
     [HttpGet]
     [Description("List priorities")]
     public async Task<ActionResult<IListResponseModel<Priority>>> GetList([FromQuery] ListQueryModel<PriorityDto> query)
         => Ok(await _mediator.Send(query));
 
-    //Get
+    //GET api/v1/priority/5 - Print
     [HttpGet("{id}")]
     [Description("print a priority")]
     public async Task<ActionResult<PriorityDetailsDto>> Get(int id)
         => Ok(await _mediator.Send(new GetPriorityDetailsQuery(id)));
 
-    //Create
+    //POST api/v1/priority - Create
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [Description("Create a priority")]
     public async Task<ActionResult<Priority>> Create(CreatePriorityCommand command)
         => Ok(await _mediator.Send(command));
 
+    //PUT api/v1/priority - Update
     [HttpPut]
+    [Authorize(Roles = "Admin")]
     [Description("Update a priority")]
     public async Task<ActionResult<Priority>> Update(UpdatePriorityCommand command)
         => Ok(await _mediator.Send(command));
 
+    //DELETE api/v1/priority/5 - Delete
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     [Description("Delete a priority")]
     public async Task<ActionResult<Unit>> Delete(int id)
         => Ok(await _mediator.Send(new DeletePriorityCommand(id)));

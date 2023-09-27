@@ -27,5 +27,7 @@ internal static class Startup
         services.AddScoped<ICustomerRepository, CustomerRepositoryEF>();
 
         services.AddTransient<IDateTime, DateTimeService>();
+
+        services.AddSingleton<IApplicationSettings, ApplicationSettings>();
     }
 }

@@ -29,6 +29,7 @@ public class GetContactDetailsQueryHandler : IRequestHandler<GetContactDetailsQu
         var contact = await _unitOfWork.Contacts.GetByIdAsync(request.Id)
             ?? throw new EntityNotFoundException(nameof(TContact), request.Id);
 
+
         return _mapper.Map<ContactDetailsDto>(contact);
     }
 }

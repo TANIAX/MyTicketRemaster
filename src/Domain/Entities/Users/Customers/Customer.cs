@@ -1,5 +1,6 @@
 ﻿using MyTicketRemaster.Domain.Entities.Users.Contacts;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace MyTicketRemaster.Domain.Entities.Users.Customers;
 
@@ -13,7 +14,6 @@ public class Customer : User
     [Required]
     [MaxLength(CustomerInvariants.AddressStreetMaxLength)]
     public Address Address { get; private set; }
-
     public virtual ICollection<TContact> Contacts { get; private set; }
     #endregion
 

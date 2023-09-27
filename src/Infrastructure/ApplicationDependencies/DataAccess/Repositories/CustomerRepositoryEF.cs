@@ -3,6 +3,7 @@ using MyTicketRemaster.Infrastructure.ApplicationDependencies.DataAccess.Reposit
 using MyTicketRemaster.Infrastructure.Persistence.Context;
 using MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositories;
 using MyTicketRemaster.Domain.Entities.Users.Customers;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyTicketRemaster.Infrastructure.ApplicationDependencies.DataAccess.Repositories;
 
@@ -26,4 +27,7 @@ internal class CustomerRepositoryEF : RepositoryBaseEF<Customer>, ICustomerRepos
         foreach (var e in entitiesToDelete)
             Remove(e);
     }
+
+    public async Task<Customer> GetCustomerByUserIdAsync(string userId)
+     => await BaseQuery.SingleOrDefaultAsync(c => c.ApplicationUserId == userId);
 }

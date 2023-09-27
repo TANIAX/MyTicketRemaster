@@ -23,8 +23,8 @@ internal static class Startup
             // Adding Roles is optional, and mostly exists for backwards-compatibility.
             // Not needed if policy/claim based authorization is used (which is recommended).
             // But, if AddRoles() is called, it must be before calling AddEntityFrameworkStores(), because otherwise IRoleStore won't be added (despite what the summary says)..
-            //.AddRoles<IdentityRole>()
 
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>(); // EF specific
     }
 }

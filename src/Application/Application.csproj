@@ -10,8 +10,11 @@
 
   <ItemGroup>
     <Compile Remove="Domain\**" />
+    <Compile Remove="TicketsLines\**" />
     <EmbeddedResource Remove="Domain\**" />
+    <EmbeddedResource Remove="TicketsLines\**" />
     <None Remove="Domain\**" />
+    <None Remove="TicketsLines\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,21 +29,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Customers\Create\" />
     <Folder Include="Customers\Delete\" />
     <Folder Include="Customers\GetDetails\" />
     <Folder Include="Customers\GetList\" />
     <Folder Include="Customers\Update\" />
-    <Folder Include="TicketsLines\Create\" />
-    <Folder Include="TicketsLines\Delete\" />
-    <Folder Include="TicketsLines\GetDetails\" />
-    <Folder Include="TicketsLines\GetList\" />
-    <Folder Include="TicketsLines\Update\" />
-    <Folder Include="TicketsHeader\Create\" />
-    <Folder Include="TicketsHeader\Delete\" />
-    <Folder Include="TicketsHeader\GetDetails\" />
-    <Folder Include="TicketsHeader\GetList\" />
-    <Folder Include="TicketsHeader\Update\" />
+    <Folder Include="Tickets\Delete\" />
+    <Folder Include="Tickets\GetDetails\" />
+    <Folder Include="Tickets\GetList\" />
+    <Folder Include="Tickets\Update\" />
   </ItemGroup>
 
 </Project>

@@ -10,10 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Samples\" />
+	 <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

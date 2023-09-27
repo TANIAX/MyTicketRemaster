@@ -39,18 +39,21 @@ namespace MyTicketRemaster.WebApi.API.V1
 
         // POST api/projet
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [Description("Create a project")]
         public async Task<ActionResult<Project>> Post(CreateProjectCommand command)
             => Ok(await _mediator.Send(command));
 
         // PUT api/projet
         [HttpPut]
+        [Authorize(Roles = "Admin")]
         [Description("Update a project")]
         public async Task<ActionResult<Project>> Put(UpdateProjectCommand command)
             => Ok(await _mediator.Send(command));
 
         // DELETE api/projet/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         [Description("Delete a project")]
         public async Task<ActionResult<Unit>> Delete(int id)
             => Ok(await _mediator.Send(new DeleteProjectCommand(id)));

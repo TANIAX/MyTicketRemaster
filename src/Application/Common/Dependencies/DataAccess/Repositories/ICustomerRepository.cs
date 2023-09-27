@@ -5,5 +5,5 @@ namespace MyTicketRemaster.Application.Common.Dependencies.DataAccess.Repositori
 
 public interface ICustomerRepository : IRepository<Customer>
 {
-    
+    Task<Customer> GetCustomerByUserIdAsync(string userId);
 }

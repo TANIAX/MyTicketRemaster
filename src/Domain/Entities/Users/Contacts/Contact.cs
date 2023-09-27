@@ -17,7 +17,7 @@ namespace MyTicketRemaster.Domain.Entities.Users.Contacts
         public string LastName { get; private set; }
 
         [MaxLength(ContactInvariants.EmailMaxLength)]
-        public string Email { get; private set; } 
+        public string Email { get; private set; }
 
         [MaxLength(ContactInvariants.PhoneNumberMaxLength)]
         public string PhoneNumber { get; private set; }
@@ -35,6 +35,19 @@ namespace MyTicketRemaster.Domain.Entities.Users.Contacts
 
         #region Constructors
         public TContact() { }
+
+        //Just for db seeding
+        public TContact(string firstName, string lastName, string email, string phoneNumber, string Language, string profilPicture, Address address)
+        {
+            UpdateFirstName(firstName);
+            UpdateLastName(lastName);
+            UpdateEmail(email);
+            UpdatePhoneNumber(phoneNumber);
+            UpdateLanguage(Language);
+            UpdateProfilPicture(profilPicture);
+            UpdateAddress(address);
+        }
+
         public TContact(string firstName, string lastName, string email, string phoneNumber, string Language, string profilPicture, Address address, Customer customer)
         {
             UpdateFirstName(firstName);
@@ -68,7 +81,7 @@ namespace MyTicketRemaster.Domain.Entities.Users.Contacts
             if (value.Length > EmployeeInvariants.LastNameMaxLength)
                 throw new ArgumentException($"Length of value ({value.Length}) exceeds maximum lastname length ({EmployeeInvariants.FirstNameMaxLength}).");
 
-            FirstName = value;
+            LastName = value;
         }
 
         public void UpdateEmail(string value)

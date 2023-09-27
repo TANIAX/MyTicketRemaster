@@ -20,33 +20,36 @@ public class TypeController : ControllerBase
     public TypeController(IMediator mediator)
      => _mediator = mediator;
 
-    //List
+    //GET api/v1/type - List
     [HttpGet]
     [Description("List types")]
     public async Task<ActionResult<IListResponseModel<TType>>> GetList([FromQuery] ListQueryModel<TypeDto> query)
         => Ok(await _mediator.Send(query));
 
-    //Get
+    //GET api/v1/type/5 - Print
     [HttpGet("{id}")]
     [Description("print a type")]
     public async Task<ActionResult<TypeDetailsDto>> Get(int id)
         => Ok(await _mediator.Send(new GetTypeDetailsQuery(id)));
 
-    //Create
+    //POST api/v1/type - Create
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [Description("Create a type")]
     public async Task<ActionResult<TType>> Create(CreateTypeCommand command)
         => Ok(await _mediator.Send(command));
 
 
-    //Update
+    //PUT api/v1/type - Update
     [HttpPut]
+    [Authorize(Roles = "Admin")]
     [Description("Update a type")]
     public async Task<ActionResult<TType>> Update(UpdateTypeCommand command)
         => Ok(await _mediator.Send(command));
 
-    //Delete
+    //DELETE api/v1/type/5 - Delete
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     [Description("Delete a type")]
     public async Task<ActionResult<Unit>> Delete(int id)
         => Ok(await _mediator.Send(new DeleteTypeCommand(id)));

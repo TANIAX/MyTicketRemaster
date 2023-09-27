@@ -21,36 +21,39 @@ public class StatusController : ControllerBase
         => _mediator = mediator;
 
 
-    //List
+    //GET api/v1/status - List
     [HttpGet]
     [Description("List status")]
     public async Task<ActionResult<IListResponseModel<TStatus>>> GetList([FromQuery] ListQueryModel<StatusDto> query)
         => Ok(await _mediator.Send(query));
 
 
-    //Get
+    //GET api/v1/status/5 - Print
     [HttpGet("{id}")]
     [Description("print a status")]
     public async Task<ActionResult<StatusDetailsDto>> Get(int id)
         => Ok(await _mediator.Send(new GetStatusDetailsQuery(id)));
 
 
-    //Create
+    //POST api/v1/status - Create
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     [Description("Create a status")]
     public async Task<ActionResult<TStatus>> Post(CreateStatusCommand command)
         => Ok(await _mediator.Send(command));
 
 
-    //Update
+    //PUT api/v1/status - Update
     [HttpPut]
+    [Authorize(Roles = "Admin")]
     [Description("Update a status")]
     public async Task<ActionResult<TStatus>> Put(UpdateStatusCommand command)
        => Ok(await _mediator.Send(command));
 
 
-    //Delete
+    //DELETE api/v1/status/5 - Delete
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
     [Description("Delete a status")]
     public async Task<ActionResult<Unit>> Delete(int id)
        => Ok(await _mediator.Send(new DeleteStatusCommand(id)));

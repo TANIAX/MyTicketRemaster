@@ -24,8 +24,14 @@ namespace MyTicketRemaster.Domain.Entities.Users.Employees
         #region Constructors
         public Employee(): base()
             => StoredReply = new List<StoredReply>();
-        
 
+
+        public Employee(string FirstName, string LastName, string email, string phoneNumber, string signature, string language, string profilPicture)
+            : base(email, phoneNumber, signature, language, profilPicture)
+        {
+            UpdateFirstName(FirstName);
+            UpdateLastName(LastName);
+        }
         public Employee(string FirstName, string LastName, string email, string phoneNumber, string signature, string language, string profilPicture, string applicationUserId, TGroup group = null) 
             : base(email, phoneNumber, signature, language, profilPicture, applicationUserId)
         {
@@ -57,7 +63,7 @@ namespace MyTicketRemaster.Domain.Entities.Users.Employees
             if (value.Length > EmployeeInvariants.LastNameMaxLength)
                 throw new ArgumentException($"Length of value ({value.Length}) exceeds maximum lastname length ({EmployeeInvariants.FirstNameMaxLength}).");
 
-            FirstName = value;
+            LastName = value;
         }
 
         public void UpdateGroup(TGroup group)

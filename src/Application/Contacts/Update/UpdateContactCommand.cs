@@ -18,7 +18,7 @@ public record UpdateContactCommand : IRequest<TContact>
     public string Language { get; set; }
     public string ProfilPicture { get; set; }
 
-    public virtual Customer Customer { get; set; }
+    public int CustomerId { get; set; }
     public virtual Address Address { get; set; }
 }
 public class UpdateContactCommandHandler : IRequestHandler<UpdateContactCommand, TContact>
@@ -33,6 +33,9 @@ public class UpdateContactCommandHandler : IRequestHandler<UpdateContactCommand,
         var contact = await _unitOfWork.Contacts.GetByIdAsync(request.Id)
                  ?? throw new EntityNotFoundException(nameof(TContact), request.Id);
 
+        var customer = await _unitOfWork.Customers.GetByIdAsync(request.CustomerId)
+                 ?? throw new EntityNotFoundException(nameof(Customer), request.CustomerId);
+
         contact.UpdateFirstName(request.FirstName.Trim());
         contact.UpdateLastName(request.LastName.Trim());
         contact.UpdateEmail(request.Email.Trim());
@@ -40,7 +43,7 @@ public class UpdateContactCommandHandler : IRequestHandler<UpdateContactCommand,
         contact.UpdateLanguage(request.Language.Trim());
         contact.UpdateProfilPicture(request.ProfilPicture.Trim());
         contact.UpdateAddress(request.Address);
-        contact.UpdateCustomer(request.Customer);
+        contact.UpdateCustomer(customer);
 
         await _unitOfWork.SaveChanges();
 
