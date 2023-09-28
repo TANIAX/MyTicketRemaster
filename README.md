@@ -5,5 +5,6 @@
 - C.R.U.D. 🚧
 - Role base authorization ❌ 
 - Test ❌
-- Business logic ❌ 
+- Business logic ❌
+- Docker support ❌
   
