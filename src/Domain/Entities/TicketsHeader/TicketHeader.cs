@@ -33,6 +33,8 @@ namespace MyTicketRemaster.Domain.Entities.TicketsHeader
         public int Read { get; private set; }
         public int Satisfaction { get; private set; }
 
+        public DateTime? ClosedDate { get; set; }
+
         public virtual Employee AssignTO { get; private set; }
         public virtual Customer Requester { get; private set; }
         public virtual TGroup Group { get; private set; }
@@ -134,6 +136,13 @@ namespace MyTicketRemaster.Domain.Entities.TicketsHeader
             Satisfaction = value;
         }
 
+        public void UpdateClosedDate(DateTime? value)
+        {
+            if (value == null)
+                throw new ArgumentException("ClosedDate cannot be null.");
+
+            ClosedDate = value;
+        }
         public void UpdateAssignTO(Employee value)
         {
             if (value == null)

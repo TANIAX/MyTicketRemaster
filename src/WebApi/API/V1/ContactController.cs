@@ -28,7 +28,6 @@ public class ContactController : ControllerBase
 
     // GET api/v1/contact/5 - Print
     [HttpGet("{id}")]
-    [Authorize(Roles = "Admin")]
     [Description("print a contact")]
     public async Task<ActionResult<ContactDetailsDto>> Get(int id)
         => Ok(await _mediator.Send(new GetContactDetailsQuery(id)));
